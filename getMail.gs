@@ -1,7 +1,7 @@
-// 検索するメールアドレス
+// FIXME your email address
 var sender = "to: hoge@example.com' ";
 
-// Incoming WebhooksのURL
+// FIXME your Incoming Webhooks URL
 var url = 'https://hooks.slack.com/xxx';
 
 function getMail() {
@@ -9,15 +9,14 @@ function getMail() {
   var dateTime = getNowDateTime();
   Logger.log('dateTime:' + dateTime);
 
-  // 指定したメールアドレスで検索(10件)
+  // search your unread mails
   var query   = GmailApp.search('label:inbox is:unread after:' + dateTime + ' ' + sender); //←指定時間以降＋受信者フィルター
   var threads = GmailApp.getMessagesForThreads(query);
 
-  // メール本体(i)
   for(var i in threads){
     var messages = threads[i];
 
-    // スレッド(j)
+    // Threads(j)
     for(var j in messages){
       var message = messages[j];
 
